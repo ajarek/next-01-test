@@ -2,17 +2,15 @@ import Link from 'next/link'
 
 async function getTickets() {
   const res = await fetch('http://localhost:4000/tickets', {
-    next: {
-      revalidate: 0, // użyj 0, aby zrezygnować z używania pamięci podręcznej
-    },
+    revalidate: 0 // use 0 to opt out of using cache
   })
 
   return res.json()
 }
-
+const tickets = await getTickets()
+ console.log(tickets);
 export default async function TicketList() {
-  const tickets = await getTickets()
-
+  
   return (
     <>
       {tickets.map((ticket) => (

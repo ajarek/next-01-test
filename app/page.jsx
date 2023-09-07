@@ -1,4 +1,5 @@
 import Link from 'next/link'
+// npx json-server --watch  _data.json --port 4000 
 export default function Home() {
   return (
     <main>

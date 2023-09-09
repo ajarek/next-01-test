@@ -1,7 +1,5 @@
 "use client"
 
-
-import { v4 } from "uuid";
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -18,13 +16,13 @@ export default function CreateForm() {
     setIsLoading(true)
 
     const newTicket = { title, body, priority, user_email: 'mario@netninja.dev' }
-     console.log(newTicket);
-    const res = await fetch('http://localhost:4000/tickets' , {
+
+    const res = await fetch('http://localhost:4000/tickets', {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(newTicket)
     })
-      console.log(res);
+
     if (res.status === 201) {
       router.refresh()
       router.push('/tickets')
@@ -44,7 +42,7 @@ export default function CreateForm() {
         />
       </label>
       <label>
-        <span>Body:</span>
+        <span>Title:</span>
         <textarea
           required
           onChange={(e) => setBody(e.target.value)}
